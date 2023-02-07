@@ -15,6 +15,6 @@ Deploy AWS resources with Terraform
 
 ## Architecture
 
-![](diagrams_image.png "AWS Deployment with Terraform")
+![AWS Deployment with Terraform](diagrams_image.png "AWS Deployment with Terraform")
 
 Built in https://github.com/mingrammer/diagrams
