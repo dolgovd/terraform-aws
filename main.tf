@@ -70,3 +70,9 @@ resource "aws_security_group" "main_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+# Add key pair
+resource "aws_key_pair" "main_auth" {
+    key_name = "aws_terraform_key"
+    public_key = file("~/.ssh/aws_terraform_key.pub")
+}
