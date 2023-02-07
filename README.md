@@ -14,5 +14,7 @@ Deploy AWS resources with Terraform
 5. Create working directory
 
 ## Architecture
-To be built with help of https://github.com/mingrammer/diagrams
 
+![](diagrams_image.png "AWS Deployment with Terraform")
+
+Built in https://github.com/mingrammer/diagrams
