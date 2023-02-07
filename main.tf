@@ -85,12 +85,12 @@ resource "aws_instance" "dev_node" {
   vpc_security_group_ids = ["aws_security_group.main_sg.id"]
   subnet_id              = aws_subnet.main_public_subnet.id
 
-  tags = {
-    Name = "dev-node"
-  }
-
   # Set disk size as 10GB (8GB is given by default)
   root_block_device {
     volume_size = 10
+  }
+
+  tags = {
+    Name = "dev-node"
   }
 }
