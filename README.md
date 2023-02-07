@@ -4,6 +4,7 @@ Deploy AWS resources with Terraform
 ## Prerequisites
 1. Created AWS account
 2. Installed VS Code
+3. Installed Terraform
 
 ## Local setup
 1. Create a user (IAM --> Create a user with programmatic access --> Administrative access)
