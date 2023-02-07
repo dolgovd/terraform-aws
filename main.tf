@@ -73,26 +73,24 @@ resource "aws_security_group" "main_sg" {
 
 # Add key pair
 resource "aws_key_pair" "main_auth" {
-    key_name = "aws_terraform_key"
-    public_key = file("~/.ssh/aws_terraform_key.pub")
+  key_name   = "aws_terraform_key"
+  public_key = file("~/.ssh/aws_terraform_key.pub")
 }
 
 # Spin up an EC2 instance
 resource "aws_instance" "dev_node" {
-    instance_type = "t2.micro"
-    ami = data.aws_ami.server_ami.id
+  instance_type          = "t2.micro"
+  ami                    = data.aws_ami.server_ami.id
+  key_name               = aws_key_pair.main_auth.key_name
+  vpc_security_group_ids = ["aws_security_group.main_sg.id"]
+  subnet_id              = aws_subnet.main_public_subnet.id
 
-    tags = {
-        Name = "dev-node"
-    }
+  tags = {
+    Name = "dev-node"
+  }
 
-    # Set parameters
-    key_name = aws_key_pair.main_auth.key_name
-    vpc_security_group_ids = ["aws_security_group.main_sg.id"]
-    subnet_id = aws_subnet.main_public_subnet.id
-
-    # Set disk size as 10GB (8GB is given by default)
-    root_block_device {
-        volume_size = 10
-    }
+  # Set disk size as 10GB (8GB is given by default)
+  root_block_device {
+    volume_size = 10
+  }
 }
